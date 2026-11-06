@@ -359,9 +359,20 @@ button {
 .marquee-track {
   display: flex;
   align-items: center;
-  gap: 34px;
+  gap: 0;
   width: max-content;
-  animation: marqueeMove 28s linear infinite;
+  will-change: transform;
+  animation: none;
+  transform: translate3d(0, 0, 0);
+}
+
+.marquee-group {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 34px;
+  padding-right: 34px;
+  white-space: nowrap;
 }
 
 .marquee-track span {
@@ -467,10 +478,11 @@ button {
   position: absolute;
   left: 8%;
   top: 25%;
+  max-width: 84%;
   font-family: var(--font-display);
-  font-size: clamp(100px, 21vw, 290px);
+  font-size: clamp(56px, 13.5vw, 190px);
   font-weight: 700;
-  letter-spacing: -0.12em;
+  letter-spacing: -0.10em;
   line-height: 0.8;
   transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
@@ -1397,8 +1409,9 @@ button {
     padding: 15px 0;
   }
 
-  .marquee-track {
+  .marquee-group {
     gap: 20px;
+    padding-right: 20px;
   }
 
   .marquee-track span {
@@ -1444,8 +1457,8 @@ button {
   }
 
   .noir-word {
-    font-size: 25vw;
-    top: 35%;
+    font-size: 15vw;
+    top: 15%;
   }
 
   .noir-caption {

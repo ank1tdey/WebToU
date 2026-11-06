@@ -116,7 +116,7 @@ We build with purpose, not just pixels.
   work: `
 Selected work:
 
-  01  NOIR — Streetwear identity
+  01  ANK1TVERSE — Personal portfolio
   02  Sunday Club — Café concept
   03  Objects of Thought — Digital archive
 
@@ -234,3 +234,52 @@ roundLinks.forEach((link) => {
     link.style.transform = "";
   });
 });
+
+/* WEBTOU seamless marquee measured loop */
+(() => {
+  const track = document.querySelector(".marquee-track");
+  const group = track?.querySelector(".marquee-group");
+  if (!track || !group) return;
+
+  let animation = null;
+  let resizeFrame = 0;
+  const speed = 42; // pixels per second
+
+  const startMarquee = () => {
+    const distance = group.getBoundingClientRect().width;
+    if (!distance) return;
+
+    if (animation) animation.cancel();
+
+    const duration = (distance / speed) * 1000;
+
+    animation = track.animate(
+      [
+        { transform: "translate3d(0, 0, 0)" },
+        { transform: `translate3d(${-distance}px, 0, 0)` }
+      ],
+      {
+        duration,
+        iterations: Infinity,
+        easing: "linear"
+      }
+    );
+  };
+
+  const scheduleRestart = () => {
+    cancelAnimationFrame(resizeFrame);
+    resizeFrame = requestAnimationFrame(startMarquee);
+  };
+
+  startMarquee();
+
+  if ("ResizeObserver" in window) {
+    const observer = new ResizeObserver(scheduleRestart);
+    observer.observe(group);
+    observer.observe(track);
+  } else {
+    window.addEventListener("resize", scheduleRestart, { passive: true });
+  }
+
+  document.fonts?.ready?.then(scheduleRestart);
+})();
