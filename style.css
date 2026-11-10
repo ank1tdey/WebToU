@@ -1707,7 +1707,7 @@ button {
 .price-amount strong { font:600 43px var(--font-display); letter-spacing:-.07em; }.custom-price strong { font-size:32px; }
 .price-card ul { list-style:none; display:flex; flex-direction:column; gap:13px; margin-bottom:30px; }
 .price-card li { position:relative; padding-left:17px; font-size:10px; line-height:1.5; }
-.price-card li::before { content:"↗"; position:absolute; left:0; color:var(--blue); }.price-featured li::before { color:var(--yellow); }
+.price-card li::before { content:""; position:absolute; left:2px; top:.42em; width:6px; height:6px; border-top:1.5px solid var(--blue); border-right:1.5px solid var(--blue); }.price-featured li::before { color:var(--yellow); }
 .price-link { margin-top:auto; padding-top:15px; border-top:1px solid var(--line); font-size:10px; color:var(--blue); }.price-featured .price-link { color:var(--yellow); border-color:rgba(255,255,255,.2); }
 .pricing-footnote { margin-top:25px; padding:18px 20px; background:rgba(49,91,214,.06); }.pricing-footnote p { color:var(--muted); font-size:10px; line-height:1.8; }
 .testimonials { padding-top:115px; padding-bottom:115px; background:var(--paper-dark); }
@@ -1768,3 +1768,134 @@ button {
 .contact-social-links a { font:9px var(--font-mono); color:var(--blue); border-bottom:1px solid rgba(36,37,31,.25); padding-bottom:5px; }
 @media (max-width:760px) { .contact-bottom { flex-direction:column; } .contact-intro,.enquiry-form { width:100%; flex-basis:auto; } }
 @media (max-width:480px) { .enquiry-form { grid-template-columns:1fr; } .form-field-wide,.enquiry-submit,.form-disclaimer { grid-column:1; } }
+
+
+/* Single featured client showcase */
+.client-feature-card { width:100%; max-width:none; }
+.client-feature-card .project-visual { min-height:clamp(220px, 30vw, 340px); display:flex; flex-direction:column; justify-content:space-between; }
+.client-feature-card .project-info { padding-top:14px; }
+.client-feature-card .project-info h3 { font-size:clamp(15px, 1.5vw, 20px); letter-spacing:.01em; }
+.client-feature-card .project-number { font-size:11px; }
+.work-grid:has(.client-feature-card) { grid-template-columns:minmax(0,1fr); }
+
+
+/* Final refinement: compact landscape client card */
+.client-feature-card { max-width: 760px; width: 100%; }
+.work-grid:has(.client-feature-card) { grid-template-columns: minmax(0, 760px); justify-content: start; gap: 28px; }
+.client-feature-card .project-visual { aspect-ratio: 2.35 / 1; min-height: 0; height: auto; }
+.client-feature-card .case-title { font-size: clamp(24px, 3.2vw, 48px); line-height: .96; top: 35%; }
+.client-feature-card .case-monogram { font-size: clamp(66px, 10vw, 126px); }
+.client-feature-card .project-info { padding-top: 12px; }
+.client-feature-card .project-info h3 { font-size: clamp(13px, 1.2vw, 16px); }
+@media (max-width: 700px) {
+  .work-grid:has(.client-feature-card) { grid-template-columns: minmax(0, 1fr); }
+  .client-feature-card { max-width: 100%; }
+  .client-feature-card .project-visual { aspect-ratio: 1.8 / 1; min-height: 0; }
+  .client-feature-card .case-title { font-size: clamp(22px, 6vw, 34px); top: 36%; }
+  .client-feature-card .case-monogram { font-size: clamp(58px, 16vw, 92px); }
+}
+
+
+/* Consistent vector icon system — avoids platform emoji rendering. */
+.icon-arrow { width:1em; height:1em; display:inline-block; flex:0 0 auto; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; vertical-align:-0.12em; }
+.icon-spark { width:1em; height:1em; display:block; fill:currentColor; stroke:none; }
+.spark-tile { width:1.25em; height:1.25em; display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; border-radius:.22em; background:#12b83f; color:#fff; box-shadow:0 1px 0 rgba(0,0,0,.16), inset 0 0 0 1px rgba(255,255,255,.25); }
+.spark-tile .icon-spark { width:76%; height:76%; }
+.arrow-tile { width:1.8em; height:1.8em; display:inline-flex; align-items:center; justify-content:center; border-radius:.34em; color:#fff; background:linear-gradient(145deg,#8db4cf,#315f83); box-shadow:inset 0 0 0 1px rgba(255,255,255,.35), 0 1px 2px rgba(0,0,0,.15); }
+.arrow-tile .icon-arrow { width:72%; height:72%; stroke-width:2.8; }
+.scribble-star { display:inline-flex; align-items:center; justify-content:center; width:.9em; height:.9em; animation:starSpin 14s linear infinite; }
+.scribble-star .spark-tile { width:100%; height:100%; border-radius:22%; }
+.note-arrow { display:inline-flex; align-items:center; justify-content:center; width:1.7em; height:1.7em; color:#fff; background:linear-gradient(145deg,#8db4cf,#315f83); border-radius:.32em; }
+.note-arrow .icon-arrow { width:75%; height:75%; stroke-width:2.8; }
+.service-arrow { display:inline-flex; align-items:center; justify-content:center; text-decoration:none; }
+.service-arrow .arrow-tile { font-size:18px; }
+.marquee-group i { display:inline-flex; width:1em; height:1em; align-items:center; justify-content:center; color:currentColor; font-style:normal; }
+.marquee-group i .icon-spark { width:100%; height:100%; }
+.decoration-one .icon-spark { width:1em; height:1em; }
+.contact-star { display:inline-flex; width:1em; height:1em; align-items:center; justify-content:center; }
+.contact-star .icon-spark { width:100%; height:100%; }
+.social-links a b { display:inline-flex; align-items:center; justify-content:center; }
+.social-links a b .icon-arrow { width:18px; height:18px; }
+.contact-button > span .icon-arrow { width:16px; height:16px; }
+.price-link .icon-arrow, .testimonial-empty a .icon-arrow, .careers-inner a .icon-arrow, .contact-social-links .icon-arrow, .footer-links .icon-arrow, .nav-contact .icon-arrow { width:1em; height:1em; }
+.round-link > span { display:inline-flex; align-items:center; justify-content:center; }
+.round-link .icon-arrow { width:22px; height:22px; color:var(--ink); }
+.case-meta .icon-arrow { width:10px; height:10px; }
+
+/* WebToU refinement — restrained punctuation, clear CTAs and responsive iconography */
+.hero-dot { display:inline-block; color:var(--blue); font-size:.78em; line-height:1; margin-left:.035em; vertical-align:.08em; }
+.hero-side-note, .hero-decoration, .contact-star, .scribble-star, .spark-tile, .arrow-tile { display:none !important; }
+.marquee-group i { display:none !important; }
+.marquee-group .marquee-dot { display:inline-block; color:var(--yellow); font-size:1.25em; line-height:1; margin:0 .15em; }
+.hero-description { max-width:760px; font-size:clamp(13px,1.2vw,17px); line-height:1.8; }
+.service-arrow { display:none !important; }
+
+/* Pricing cards respond clearly to hover, keyboard focus and touch. */
+.price-card { cursor:pointer; border:1px solid var(--line); border-radius:2px; transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease, background .22s ease; }
+.price-card:hover, .price-card:focus-within, .price-card:active { border-color:var(--blue); box-shadow:0 0 0 1px rgba(49,91,214,.24), 0 12px 34px rgba(49,91,214,.13); background:rgba(49,91,214,.045); transform:translateY(-3px); }
+.price-featured:hover, .price-featured:focus-within, .price-featured:active { box-shadow:0 0 0 1px rgba(255,255,255,.35), 0 12px 34px rgba(0,0,0,.2), 0 0 26px rgba(49,91,214,.22); }
+.price-card li { padding-left:16px; }
+.price-card li::before { content:""; width:5px; height:5px; border:0; border-radius:50%; background:var(--blue); top:.62em; left:1px; }
+.price-featured li::before { background:var(--yellow); }
+.price-link { display:inline-flex; align-items:center; gap:0; }
+.price-link .icon-arrow { display:none !important; }
+
+/* One compact, full-width landscape client strip aligned with the Clients section. */
+.work-grid:has(.client-feature-card) { display:block; width:100%; }
+.client-feature-card { width:100%; max-width:none; margin:0; }
+.client-feature-card .project-visual { position:relative; display:grid; grid-template-columns:1fr auto; grid-template-rows:auto 1fr; align-items:center; gap:10px 24px; width:100%; height:clamp(112px, 13vw, 158px); min-height:0; aspect-ratio:auto; padding:16px clamp(18px,3vw,34px); overflow:hidden; }
+.client-card-kicker { grid-column:1/-1; align-self:start; font:9px var(--font-mono); letter-spacing:.08em; opacity:.72; }
+.client-card-main { display:flex; align-items:center; gap:16px; min-width:0; }
+.client-logo-mark { display:flex; flex:0 0 auto; align-items:center; justify-content:center; width:54px; height:54px; border:1px solid currentColor; border-radius:50%; font:600 18px var(--font-display); letter-spacing:-.08em; }
+.client-card-copy { min-width:0; }
+.client-card-copy h3 { font:500 clamp(15px,1.8vw,22px) var(--font-display); line-height:1.15; letter-spacing:-.04em; }
+.client-card-copy p { margin-top:6px; font:8px var(--font-mono); letter-spacing:.06em; opacity:.72; }
+.client-card-visit { justify-self:end; align-self:center; font:9px var(--font-mono); letter-spacing:.08em; border-bottom:1px solid currentColor; padding-bottom:4px; white-space:nowrap; }
+.client-feature-card .project-visual:hover { filter:brightness(1.035); }
+.client-feature-card .project-info { display:none !important; }
+
+/* Use actual social brand marks rather than generic arrow symbols. */
+.social-links a b { display:inline-flex; align-items:center; justify-content:center; color:var(--ink); }
+.brand-icon { width:22px; height:22px; display:block; fill:currentColor; }
+.team-name-link { color:inherit; text-decoration:none; border-bottom:1px solid transparent; transition:color .2s ease,border-color .2s ease; }
+.team-name-link:hover, .team-name-link:focus-visible { color:var(--yellow); border-color:currentColor; outline:none; }
+@media (max-width:600px) {
+  .hero-description { max-width:100%; }
+  .client-feature-card .project-visual { height:116px; padding:12px 14px; gap:7px 12px; }
+  .client-logo-mark { width:42px; height:42px; font-size:15px; }
+  .client-card-main { gap:10px; }
+  .client-card-kicker, .client-card-visit { font-size:7px; }
+  .client-card-copy h3 { font-size:14px; }
+  .client-card-copy p { font-size:6px; }
+}
+@media (prefers-reduced-motion: reduce) { .price-card { transition:none; } }
+/* No empty scroll control after removing decorative arrow artwork. */
+.hero-bottom { grid-template-columns:minmax(0,1fr) auto; }
+.scroll-label { grid-column:2; }
+
+/* Fix: keep the featured pricing card dark during hover, press and focus. */
+.price-featured,
+.price-featured:hover,
+.price-featured:focus,
+.price-featured:focus-within,
+.price-featured:active {
+  background: var(--ink) !important;
+  color: var(--paper) !important;
+  border-color: var(--ink);
+}
+.price-featured h3,
+.price-featured .price-desc,
+.price-featured .price-amount,
+.price-featured .price-amount strong,
+.price-featured li {
+  color: var(--paper);
+}
+.price-featured .price-kicker,
+.price-featured .price-tag,
+.price-featured .price-link {
+  color: var(--yellow);
+}
+.price-featured .price-amount small { color: rgba(255,255,255,.62); }
+.price-featured li::before { background: var(--yellow); }
+.price-featured .price-amount { border-color: rgba(255,255,255,.22); }
+.price-featured .price-link { border-color: rgba(255,255,255,.22); }
