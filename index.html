@@ -4,364 +4,122 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#f5f2e9" />
-  <meta name="description" content="WEBTOU is an independent digital studio building thoughtful websites, identities, and digital experiences." />
-
-  <title>WEBTOU — Digital Studio</title>
-
+  <meta name="description" content="WebToU is an independent digital studio helping growing businesses build better websites, brand identities and social media presence." />
+  <meta property="og:title" content="WebToU — Digital Studio" />
+  <meta property="og:description" content="Thoughtful websites, identities and digital experiences for businesses ready to move forward." />
+  <title>WebToU — Independent Digital Studio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
   <link rel="stylesheet" href="style.css" />
   <script src="script.js" defer></script>
 </head>
-
 <body>
-  <div class="page-noise"></div>
-  <div class="cursor-glow"></div>
-
-  <!-- Navigation -->
+  <div class="page-noise" aria-hidden="true"></div>
+  <div class="cursor-glow" aria-hidden="true"></div>
   <header class="nav">
-    <a class="logo" href="#home" aria-label="WEBTOU home">
-      WEBTOU<span class="logo-dot">®</span>
-    </a>
-
-    <div class="nav-status">
-      <span class="status-dot"></span>
-      Independent digital studio
-    </div>
-
-    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
-      <span></span>
-      <span></span>
-    </button>
-
-    <nav class="nav-links" id="navLinks">
-      <a href="#work">Work <span>01</span></a>
-      <a href="#services">Services <span>02</span></a>
-      <a href="#about">Studio <span>03</span></a>
-      <a href="#contact" class="nav-contact">Let’s talk ↗</a>
+    <a class="logo" href="#home" aria-label="WebToU home">WEBTOU<span class="logo-dot">®</span></a>
+    <div class="nav-status"><span class="status-dot"></span> Independent digital studio</div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false" aria-controls="navLinks"><span></span><span></span></button>
+    <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+      <a href="#work">Work <span>01</span></a><a href="#services">Services <span>02</span></a><a href="#process">Process <span>03</span></a><a href="#studio">Studio <span>04</span></a><a href="#pricing">Pricing <span>05</span></a><a href="#contact" class="nav-contact">Let’s talk ↗</a>
     </nav>
   </header>
-
   <main>
-    <!-- Hero -->
     <section class="hero section-padding" id="home">
-      <div class="hero-top reveal">
-        <span class="eyebrow">DESIGN × TECHNOLOGY × PURPOSE</span>
-        <span class="hero-location">INDEPENDENT STUDIO · INDIA</span>
-      </div>
-
+      <div class="hero-top reveal"><span class="eyebrow">DESIGN × TECHNOLOGY × PURPOSE</span><span class="hero-location">INDEPENDENT STUDIO · INDIA</span></div>
       <div class="hero-title-wrap">
-        <h1 class="hero-title">
-          <span class="title-line"><span>We make</span></span>
-          <span class="title-line title-line-two">
-            <span class="title-blue">digital</span>
-            <span class="scribble-star">✳</span>
-          </span>
-          <span class="title-line"><span>make sense.</span></span>
-        </h1>
-
-        <div class="hero-side-note reveal">
-          <span class="note-arrow">↙</span>
-          <p>
-            Thoughtful websites and digital experiences
-            for businesses ready to move forward.
-          </p>
-        </div>
+        <h1 class="hero-title"><span class="title-line"><span>We make</span></span><span class="title-line title-line-two"><span class="title-blue">digital</span><span class="scribble-star">✳</span></span><span class="title-line"><span>make sense.</span></span></h1>
+        <div class="hero-side-note reveal"><span class="note-arrow">↙</span><p>Thoughtful digital work for businesses ready to move forward.</p></div>
       </div>
-
-      <div class="hero-bottom reveal">
-        <p class="hero-description">
-          We turn ideas into useful, memorable digital
-          experiences—built with clarity, character, and care.
-        </p>
-
-        <a href="#work" class="round-link" aria-label="Explore our work">
-          <span>↓</span>
-        </a>
-
-        <span class="scroll-label">SCROLL TO EXPLORE</span>
-      </div>
-
-      <div class="hero-decoration decoration-one">✳</div>
+      <div class="hero-bottom reveal"><p class="hero-description">We bring strategy, design and technology together to build useful, memorable experiences for growing businesses.</p><a href="#work" class="round-link" aria-label="Explore our work"><span>↓</span></a><span class="scroll-label">SCROLL TO EXPLORE</span></div>
+      <div class="hero-decoration decoration-one" aria-hidden="true">✳</div>
     </section>
+    <div class="marquee" aria-label="Design with intention, build with purpose, make it mean something"><div class="marquee-track"><div class="marquee-group"><span>DESIGN WITH INTENTION</span><i>✳</i><span>BUILD WITH PURPOSE</span><i>✳</i><span>MAKE IT MEAN SOMETHING</span><i>✳</i><span>THINK BEYOND THE BRIEF</span><i>✳</i><span>CREATE WITH CLARITY</span><i>✳</i><span>MAKE EVERY DETAIL COUNT</span><i>✳</i><span>BUILT TO MOVE BUSINESS FORWARD</span><i>✳</i></div><div class="marquee-group" aria-hidden="true"><span>DESIGN WITH INTENTION</span><i>✳</i><span>BUILD WITH PURPOSE</span><i>✳</i><span>MAKE IT MEAN SOMETHING</span><i>✳</i><span>THINK BEYOND THE BRIEF</span><i>✳</i><span>CREATE WITH CLARITY</span><i>✳</i><span>MAKE EVERY DETAIL COUNT</span><i>✳</i><span>BUILT TO MOVE BUSINESS FORWARD</span><i>✳</i></div></div></div>
 
-    <!-- Marquee -->
-    <div class="marquee" aria-label="Design, development, and digital experiences">
-      <div class="marquee-track">
-        <div class="marquee-group">
-          <span>DESIGN WITH INTENTION</span><i>✳</i>
-          <span>BUILD WITH PURPOSE</span><i>✳</i>
-          <span>MAKE IT MEAN SOMETHING</span><i>✳</i>
-        </div>
-        <div class="marquee-group" aria-hidden="true">
-          <span>DESIGN WITH INTENTION</span><i>✳</i>
-          <span>BUILD WITH PURPOSE</span><i>✳</i>
-          <span>MAKE IT MEAN SOMETHING</span><i>✳</i>
-        </div>
-      </div>
-    </div>
-
-    <!-- Work -->
     <section class="work section-padding" id="work">
-      <div class="section-heading reveal">
-        <div>
-          <span class="eyebrow">01 / SELECTED WORK</span>
-          <h2>Ideas made<br /><span class="serif-italic">visible.</span></h2>
-        </div>
-
-        <p class="section-intro">
-          Every project starts with a question.
-          We build the digital answer.
-        </p>
-      </div>
-
+      <div class="section-heading reveal"><div><span class="eyebrow">01 / SELECTED WORK</span><h2>Ideas made<br /><span class="serif-italic">visible.</span></h2></div><p class="section-intro">A look at the digital experiences and creative work taking shape at WebToU.</p></div>
       <div class="work-grid">
-        <article class="project-card project-large reveal">
-          <a href="https://ank1tverse.tech" 
-             class="project-visual visual-noir"
-             target="_blank"
-            rel="noopener noreferrer">
-            <div class="visual-top">
-              <span>WEBTOU® PRESENTS</span>
-              <span>PROJECT / 001</span>
-            </div>
-            <div class="noir-word">ANK1TVERSE<span>®</span></div>
-            <div class="noir-caption">NOT MADE TO BLEND IN.</div>
-            <div class="visual-sticker">NEW<br />FORM<br />NEW<br />RULES</div>
-            <div class="visual-bottom">
-              <span>PERSONAL PORTFOLIO / CREATIVE DESIGN</span>
-              <span>↗</span>
-            </div>
-          </a>
+        <article class="project-card project-large reveal"><a href="https://maakamakhyatourandtravels.in" target="_blank" rel="noopener noreferrer" class="project-visual visual-kamakshya" aria-label="Visit the Maa Kamakhya Tour and Travels website"><div class="case-kicker">WEBTOU® · CLIENT PROJECT / 001</div><div class="case-monogram">MK<span>.</span></div><div class="case-title">MAA KAMAKHYA<br/><em>TOUR & TRAVELS</em></div><div class="case-meta"><span>TOURISM · WEBSITE DESIGN & DEVELOPMENT</span><span>↗ VISIT WEBSITE</span></div></a><div class="project-info"><div><h3>MAA KAMAKHYA TOUR &amp; TRAVELS</h3><p>CLIENT WEBSITE · TOURISM &amp; CAR RENTAL</p></div><span class="project-number">01</span></div></article>
+        <article class="project-card project-large reveal"><a href="https://ank1tverse.tech" target="_blank" rel="noopener noreferrer" class="project-visual visual-noir"><div class="visual-top"><span>WEBTOU® PRESENTS</span><span>PROJECT / 002</span></div><div class="noir-word">ANK1TVERSE<span>®</span></div><div class="noir-caption">MY PORTFOLIO WEBSITE.</div><div class="visual-sticker">PERSONAL<br/>PORTFOLIO</div><div class="visual-bottom"><span>ANK1TVERSE.TECH / PERSONAL PORTFOLIO</span><span>↗ VISIT WEBSITE</span></div></a><div class="project-info"><div><h3>ANK1TVERSE — My Portfolio</h3><p>PERSONAL PORTFOLIO WEBSITE · DESIGN &amp; DEVELOPMENT</p></div><span class="project-number">02</span></div></article>
 
-          <div class="project-info">
-            <div>
-              <h3>ANK1TVERSE — Beyond the ordinary</h3>
-              <p>PERSONAL PORTFOLIO · CREATIVE DESIGN</p>
-            </div>
-            <span class="project-number">01</span>
-          </div>
-        </article>
-
-        <article class="project-card reveal">
-          <a href="#contact" class="project-visual visual-cafe">
-            <div class="cafe-sun"></div>
-            <div class="cafe-label">A LITTLE PLACE<br />TO SLOW DOWN.</div>
-            <div class="cafe-name">Sunday<br /><span>Club.</span></div>
-            <div class="cafe-bottom">
-              <span>COFFEE · COMMUNITY · CULTURE</span>
-              <span>↗</span>
-            </div>
-          </a>
-
-          <div class="project-info">
-            <div>
-              <h3>Sunday Club</h3>
-              <p>Digital experience · Café concept</p>
-            </div>
-            <span class="project-number">02</span>
-          </div>
-        </article>
-
-        <article class="project-card reveal">
-          <a href="#contact" class="project-visual visual-archive">
-            <div class="archive-top">THE CREATIVE ARCHIVE / 2026</div>
-            <div class="archive-shape shape-one"></div>
-            <div class="archive-shape shape-two"></div>
-            <div class="archive-title">Objects<br />of <span>thought.</span></div>
-            <div class="archive-bottom">
-              <span>ART DIRECTION / DIGITAL</span>
-              <span>↗</span>
-            </div>
-          </a>
-
-          <div class="project-info">
-            <div>
-              <h3>Objects of Thought</h3>
-              <p>Art direction · Portfolio concept</p>
-            </div>
-            <span class="project-number">03</span>
-          </div>
-        </article>
       </div>
-
-      <div class="work-footer reveal">
-        <span>MORE WORK IS IN THE MAKING</span>
-        <a href="#contact">Have a project in mind? Let’s talk ↗</a>
-      </div>
+      <div class="work-footer reveal"><span>QUALITY OVER EMPTY COUNTS</span><a href="#contact">Have a project in mind? Let’s talk ↗</a></div>
     </section>
 
-    <!-- Services -->
     <section class="services section-padding" id="services">
-      <div class="section-heading reveal">
-        <div>
-          <span class="eyebrow">02 / WHAT WE DO</span>
-          <h2>Small studio.<br /><span class="serif-italic">Big picture.</span></h2>
-        </div>
-
-        <p class="section-intro">
-          From the first sketch to the final
-          interaction, we make digital work
-          feel considered.
-        </p>
+      <div class="section-heading reveal"><div><span class="eyebrow">02 / WHAT WE DO</span><h2>Useful work.<br/><span class="serif-italic">Clear outcomes.</span></h2></div><p class="section-intro">We help businesses look credible, communicate clearly and make it easier for customers to take action.</p></div>
+      <div class="service-groups">
+        <div class="service-group-label"><span>01 — DIGITAL PRESENCE</span><span>BUILD / LAUNCH / GROW</span></div>
+        <div class="service-row reveal"><span class="service-number">01</span><div><h3>Website Development</h3><p>Responsive business, service, tourism, portfolio and other purpose-built websites.</p><small>Discovery · Structure · UI · Development · Testing · Launch</small></div><a class="service-arrow" href="#contact" aria-label="Enquire about website development">↗</a></div>
+        <div class="service-row reveal"><span class="service-number">02</span><div><h3>Landing Page Development</h3><p>Focused pages for campaigns, products, lead generation and service enquiries.</p><small>Conversion-focused layout · Responsive build · Form / CTA setup</small></div><a class="service-arrow" href="#contact" aria-label="Enquire about landing pages">↗</a></div>
+        <div class="service-row reveal"><span class="service-number">03</span><div><h3>WordPress Development</h3><p>Custom WordPress websites and page-builder builds with practical content editing.</p><small>Theme setup · Editable content · Plugin configuration · Handover</small></div><a class="service-arrow" href="#contact" aria-label="Enquire about WordPress development">↗</a></div>
+        <div class="service-group-label service-group-spaced"><span>02 — BRAND & COMMUNICATION</span><span>IDENTITY / CONTENT / CONSISTENCY</span></div>
+        <div class="service-row reveal"><span class="service-number">04</span><div><h3>Graphic Design</h3><p>Social creatives, promotional artwork, digital collateral and campaign visuals.</p><small>Creative direction · Design system · Final digital assets</small></div><a class="service-arrow" href="#contact" aria-label="Enquire about graphic design">↗</a></div>
+        <div class="service-row reveal"><span class="service-number">05</span><div><h3>Brand Identity & Logo Design</h3><p>A recognisable visual foundation for businesses building their identity.</p><small>Visual research · Logo concepts · Colour · Typography · Brand assets</small></div><a class="service-arrow" href="#contact" aria-label="Enquire about brand identity">↗</a></div>
+        <div class="service-row reveal"><span class="service-number">06</span><div><h3>Social Media Management</h3><p>Consistent social communication, from planning and creative production to publishing and reporting.</p><small>Planning · Posts · Captions · Reels · Scheduling · Community · Ads · Analytics</small></div><a class="service-arrow" href="#contact" aria-label="Enquire about social media management">↗</a></div>
       </div>
+      <div class="future-services reveal"><span class="eyebrow">IN DEVELOPMENT / NEXT PHASE</span><div><strong>SEO Services</strong><span>Search visibility and ongoing optimisation</span></div><div><strong>Custom Admin Dashboards</strong><span>Purpose-built tools for business operations</span></div><p>These services are on our roadmap and are not currently listed as standard active packages.</p></div>
+    </section>
 
-      <div class="services-list">
-        <div class="service-row reveal">
-          <span class="service-number">01</span>
-          <h3>Web design & development</h3>
-          <p>Useful, responsive websites built around your goals.</p>
-          <span class="service-arrow">↗</span>
-        </div>
+    <section class="process section-padding" id="process">
+      <div class="section-heading reveal"><div><span class="eyebrow">03 / HOW WE WORK</span><h2>Good work<br/><span class="serif-italic">has a process.</span></h2></div><p class="section-intro">A clear, collaborative workflow keeps expectations realistic and projects moving.</p></div>
+      <div class="process-grid">
+        <article class="process-card reveal"><span>01</span><h3>Understand</h3><p>We learn about your business, audience, goals, constraints and what success should look like.</p><small>BRIEF · DISCOVERY</small></article>
+        <article class="process-card reveal"><span>02</span><h3>Plan</h3><p>We define the scope, deliverables, timeline, responsibilities and project estimate before work begins.</p><small>SCOPE · PROPOSAL</small></article>
+        <article class="process-card reveal"><span>03</span><h3>Design</h3><p>We shape the structure and visual direction, then share work for feedback and approval.</p><small>STRUCTURE · CREATIVE</small></article>
+        <article class="process-card reveal"><span>04</span><h3>Build</h3><p>We develop the approved direction, add agreed functionality and test across key screen sizes.</p><small>DEVELOPMENT · QA</small></article>
+        <article class="process-card reveal"><span>05</span><h3>Launch & hand over</h3><p>We publish the work, share agreed access and provide a practical handover for the next steps.</p><small>DELIVERY · HANDOVER</small></article>
+      </div>
+      <p class="process-note">Every project receives a written scope. New requests outside the agreed scope may affect cost and delivery time.</p>
+    </section>
 
-        <div class="service-row reveal">
-          <span class="service-number">02</span>
-          <h3>Brand identity</h3>
-          <p>Visual systems that give your business a distinct voice.</p>
-          <span class="service-arrow">↗</span>
-        </div>
-
-        <div class="service-row reveal">
-          <span class="service-number">03</span>
-          <h3>Digital experiences</h3>
-          <p>Interactive experiences designed to make people care.</p>
-          <span class="service-arrow">↗</span>
-        </div>
-
-        <div class="service-row reveal">
-          <span class="service-number">04</span>
-          <h3>Creative direction</h3>
-          <p>Clear ideas, thoughtful visuals, and consistent execution.</p>
-          <span class="service-arrow">↗</span>
-        </div>
+    <section class="about section-padding" id="studio">
+      <div class="about-top reveal"><span class="eyebrow">04 / THE STUDIO</span><span class="about-stamp">GOOD IDEAS<br/>DESERVE GOOD<br/>EXECUTION ✳</span></div>
+      <h2 class="about-statement reveal">We believe the internet<br/>could use a little more<br/><span class="serif-italic">intention.</span></h2>
+      <div class="about-bottom reveal"><p>WebToU is an independent digital studio working with small businesses, independent professionals and growing organisations. We bring design and technology together to make digital work more useful, accessible and memorable.</p><div class="studio-principles"><span>01 — THINK CLEARLY</span><span>02 — DESIGN WITH PURPOSE</span><span>03 — BUILD RESPONSIBLY</span></div></div>
+      <div class="team-heading reveal"><span class="eyebrow">THE PEOPLE BEHIND WEBTOU</span><p>A small leadership team with distinct responsibilities and one shared direction.</p></div>
+      <div class="team-grid">
+        <article class="team-card reveal"><div class="team-avatar avatar-a">A<span>.</span></div><div class="team-card-meta"><span>01 / FOUNDING TEAM</span><span>WEBTOU</span></div><h3>Ankit</h3><p class="team-role">Founder &amp; CTO</p><p class="team-bio">Leads technology, digital direction and the technical execution behind WebToU’s work.</p></article>
+        <article class="team-card reveal"><div class="team-avatar avatar-s">S<span>.</span></div><div class="team-card-meta"><span>02 / LEADERSHIP</span><span>WEBTOU</span></div><h3>Soumyadeep</h3><p class="team-role">Chief Operating Officer</p><p class="team-bio">Leads business operations, internal coordination and the systems that keep projects moving.</p></article>
+        <article class="team-card reveal"><div class="team-avatar avatar-d">D<span>.</span></div><div class="team-card-meta"><span>03 / LEADERSHIP</span><span>WEBTOU</span></div><h3>Dishan</h3><p class="team-role">Chief Client Officer</p><p class="team-bio">Leads client communication, relationship management and the experience clients have working with WebToU.</p></article>
       </div>
     </section>
 
-    <!-- Studio -->
-    <section class="about section-padding" id="about">
-      <div class="about-top reveal">
-        <span class="eyebrow">03 / THE STUDIO</span>
-        <span class="about-stamp">GOOD IDEAS<br />DESERVE GOOD<br />EXECUTION ✳</span>
-      </div>
-
-      <h2 class="about-statement reveal">
-        We believe the internet<br />
-        could use a little more<br />
-        <span class="serif-italic">intention.</span>
-      </h2>
-
-      <div class="about-bottom reveal">
-        <p>
-          WEBTOU is an independent digital studio founded by
-          two curious minds. We work with ambitious people
-          and growing businesses to turn ideas into useful,
-          meaningful digital experiences.
-        </p>
-
-        <div class="founders">
-          <div class="founder">
-            <span class="founder-initial">A.</span>
-            <div>
-              <strong>Ankit</strong>
-              <span>Founder & Creative Head</span>
-            </div>
-          </div>
-
-          <div class="founder">
-            <span class="founder-initial">S.</span>
-            <div>
-              <strong>Soumyadeep</strong>
-              <span>Founder & Operations Head</span>
-            </div>
-          </div>
-        </div>
-      </div>
+    <section class="proof section-padding" id="clients">
+      <div class="proof-copy reveal"><span class="eyebrow">05 / BUILT ON TRUST</span><h2>Real work.<br/><span class="serif-italic">Real people.</span></h2><p>We would rather show the work and let it speak than publish numbers we cannot substantiate. Every project begins with a conversation and a clear understanding of what the client needs.</p></div>
+      <div class="proof-stats reveal"><div><strong>04+</strong><span>Clients</span></div><div><strong>02</strong><span>Featured websites</span></div><div><strong>10+</strong><span>Projects</span></div><div><strong>06</strong><span>Active service categories</span></div><p>Two websites are showcased here; they represent selected work, not the total number of clients or projects.</p></div>
     </section>
 
-    <!-- Interactive terminal -->
-    <section class="terminal-section section-padding">
-      <div class="terminal-intro reveal">
-        <span class="eyebrow">A LITTLE SOMETHING EXTRA</span>
-        <h2>Get to know<br /><span class="serif-italic">our thinking.</span></h2>
-        <p>Type a command. Explore the studio.</p>
+    <section class="pricing section-padding" id="pricing">
+      <div class="section-heading reveal"><div><span class="eyebrow">06 / PRICING APPROACH</span><h2>Clear starting points.<br/><span class="serif-italic">No surprises.</span></h2></div><p class="section-intro">Indicative launch pricing. A final quote follows a short brief and confirmed scope.</p></div>
+      <div class="pricing-grid">
+        <article class="price-card reveal"><span class="price-kicker">01 / STARTER WEBSITE</span><h3>Single-page website</h3><p class="price-desc">A focused online presence for a service, business or campaign.</p><div class="price-amount"><small>Starting at</small><strong>₹3,499</strong></div><ul><li>One responsive page</li><li>Core business information</li><li>Contact / enquiry call-to-action</li><li>Basic on-page setup</li><li>Pre-launch testing</li></ul><a href="#contact" class="price-link">Discuss this package ↗</a></article>
+        <article class="price-card price-featured reveal"><span class="price-kicker">02 / BUSINESS WEBSITE</span><span class="price-tag">POPULAR SCOPE</span><h3>2–5 page website</h3><p class="price-desc">A more complete website for businesses with multiple services or information areas.</p><div class="price-amount"><small>Starting at</small><strong>₹5,499</strong></div><ul><li>2–5 responsive pages</li><li>Service / about / contact sections</li><li>Enquiry call-to-action</li><li>Basic on-page setup</li><li>Pre-launch testing</li></ul><a href="#contact" class="price-link">Discuss this package ↗</a></article>
+        <article class="price-card reveal"><span class="price-kicker">03 / BRAND FOUNDATION</span><h3>Brand identity</h3><p class="price-desc">A considered visual direction shaped around your business and audience.</p><div class="price-amount custom-price"><small>Pricing</small><strong>By scope</strong></div><ul><li>Discovery and visual direction</li><li>Logo design scope</li><li>Colour and typography direction</li><li>Agreed export formats</li><li>Optional brand collateral</li></ul><a href="#contact" class="price-link">Request an estimate ↗</a></article>
       </div>
-
-      <div class="terminal reveal">
-        <div class="terminal-header">
-          <div class="terminal-dots">
-            <span></span><span></span><span></span>
-          </div>
-          <span>webtou://studio-terminal</span>
-          <span class="terminal-live">LIVE</span>
-        </div>
-
-        <div class="terminal-output" id="terminalOutput">
-          <p class="terminal-muted">WEBTOU STUDIO TERMINAL [Version 1.0]</p>
-          <p>Type <span class="terminal-highlight">help</span> to see available commands.</p>
-        </div>
-
-        <form class="terminal-form" id="terminalForm">
-          <label for="terminalInput">visitor@webtou:~$</label>
-          <input
-            id="terminalInput"
-            type="text"
-            autocomplete="off"
-            spellcheck="false"
-            placeholder="type a command..."
-          />
-          <button type="submit" aria-label="Run command">↵</button>
-        </form>
-
-        <div class="terminal-suggestions">
-          <button data-command="services">services</button>
-          <button data-command="philosophy">philosophy</button>
-          <button data-command="founders">founders</button>
-          <button data-command="contact">contact</button>
-        </div>
-      </div>
+      <div class="pricing-footnote reveal"><p><strong>Please note:</strong> These are indicative starting prices based on the earlier WebToU price list, not a binding quotation. Final cost depends on content readiness, functionality, revisions and delivery scope. Domain, hosting, paid plugins, stock assets, payment gateway fees, ad spend and other third-party charges are separate unless stated in the proposal. Social media management, e-commerce and larger custom builds are quoted after discovery.</p></div>
     </section>
 
-    <!-- Contact -->
-    <section class="contact section-padding" id="contact">
-      <div class="contact-top reveal">
-        <span class="eyebrow">04 / START SOMETHING</span>
-        <span class="contact-note">HAVE A GOOD ONE IN MIND?</span>
-      </div>
+    <section class="testimonials section-padding" id="testimonials"><div class="section-heading reveal"><div><span class="eyebrow">07 / CLIENT WORDS</span><h2>Good work is<br/><span class="serif-italic">a conversation.</span></h2></div><p class="section-intro">We only publish feedback with a client’s permission. This space will feature verified testimonials.</p></div><div class="testimonial-empty reveal"><span>✳</span><div><strong>Client stories are being collected.</strong><p>Have worked with us? Your honest feedback helps future clients understand what working together feels like.</p></div><a href="mailto:ankitdeypersonal@gmail.com?subject=WebToU%20Client%20Feedback">Share feedback ↗</a></div></section>
 
-      <h2 class="contact-title reveal">
-        Let’s make<br />
-        <span class="serif-italic">it matter.</span>
-        <span class="contact-star">✳</span>
-      </h2>
+    <section class="social section-padding" id="social"><div class="social-copy reveal"><span class="eyebrow">08 / FOLLOW THE WORK</span><h2>More from<br/><span class="serif-italic">the studio.</span></h2><p>Updates, experiments, selected work and behind-the-scenes notes from WebToU.</p></div><div class="social-links reveal"><a href="#contact" aria-label="WebToU on Instagram"><span>INSTAGRAM</span><strong>WebToU on Instagram</strong><b>↗</b></a><a href="#contact" aria-label="WebToU on LinkedIn"><span>LINKEDIN</span><strong>WebToU on LinkedIn</strong><b>↗</b></a></div><p class="social-note">Official WebToU Instagram and LinkedIn links will be added here.</p></section>
 
-      <div class="contact-bottom reveal">
-        <p>
-          Tell us what you’re thinking.
-          We’ll help you figure out what comes next.
-        </p>
+    <section class="faq section-padding" id="faq"><div class="section-heading reveal"><div><span class="eyebrow">09 / QUESTIONS, ANSWERED</span><h2>Before we<br/><span class="serif-italic">get started.</span></h2></div><p class="section-intro">A few practical details about working with the studio.</p></div><div class="faq-list">
+      <details class="faq-item reveal"><summary>What happens after I contact WebToU?<span>+</span></summary><p>We review your enquiry, ask for any missing project context and arrange a discussion if needed. Once the scope is clear, we share a proposal with deliverables, timeline and pricing.</p></details>
+      <details class="faq-item reveal"><summary>How long does a website take?<span>+</span></summary><p>Timing depends on page count, functionality, content readiness and feedback. We confirm a realistic schedule in the proposal before starting.</p></details>
+      <details class="faq-item reveal"><summary>Do I need to provide website content and images?<span>+</span></summary><p>Ideally, yes. We can guide the content structure and discuss copy or asset support as a separate part of the scope.</p></details>
+      <details class="faq-item reveal"><summary>Can I update my website after launch?<span>+</span></summary><p>WordPress projects can be configured for client-side content editing. For other builds, update arrangements depend on the technology and maintenance scope agreed in advance.</p></details>
+      <details class="faq-item reveal"><summary>Are domain and hosting included?<span>+</span></summary><p>They are quoted separately unless a proposal explicitly says otherwise. Third-party subscriptions, premium plugins and transaction fees are also separate.</p></details>
+      <details class="faq-item reveal"><summary>Do you manage social media advertising?<span>+</span></summary><p>Paid campaign setup and management can be included in a social media scope. The advertising budget is paid separately by the client to the platform.</p></details>
+    </div></section>
 
-        <a
-          class="contact-button"
-          href="mailto:ankitdeypersonal@gmail.com?subject=WEBTO%20Project%20Enquiry"
-        >
-          Tell us about your project <span>↗</span>
-        </a>
-      </div>
-    </section>
+    <section class="careers section-padding" id="careers"><div class="careers-inner reveal"><span class="eyebrow">10 / WORK WITH US</span><h2>Good people.<br/><span class="serif-italic">Good work.</span></h2><p>We’re open to meeting thoughtful designers, developers, creators and collaborators who care about doing useful work. Tell us what you do and how you’d like to contribute.</p><a href="mailto:ankitdeypersonal@gmail.com?subject=Working%20with%20WebToU">Introduce yourself ↗</a></div></section>
+
+    <section class="terminal-section section-padding"><div class="terminal-intro reveal"><span class="eyebrow">A LITTLE SOMETHING EXTRA</span><h2>Get to know<br/><span class="serif-italic">our thinking.</span></h2><p>Type a command. Explore the studio.</p></div><div class="terminal reveal"><div class="terminal-header"><div class="terminal-dots"><span></span><span></span><span></span></div><span>webtou://studio-terminal</span><span class="terminal-live">LIVE</span></div><div class="terminal-output" id="terminalOutput" aria-live="polite"><p class="terminal-muted">WEBTOU STUDIO TERMINAL [Version 2.0]</p><p>Type <span class="terminal-highlight">help</span> to see available commands.</p></div><form class="terminal-form" id="terminalForm"><label for="terminalInput">visitor@webtou:~$</label><input id="terminalInput" type="text" autocomplete="off" spellcheck="false" placeholder="type a command..."/><button type="submit" aria-label="Run command">↵</button></form><div class="terminal-suggestions"><button type="button" data-command="services">services</button><button type="button" data-command="process">process</button><button type="button" data-command="team">team</button><button type="button" data-command="contact">contact</button></div></div></section>
+
+    <section class="contact section-padding" id="contact"><div class="contact-top reveal"><span class="eyebrow">11 / START SOMETHING</span><span class="contact-note">HAVE A GOOD ONE IN MIND?</span></div><h2 class="contact-title reveal">Let’s make<br/><span class="serif-italic">it matter.</span><span class="contact-star">✳</span></h2><div class="contact-bottom reveal"><p>Tell us what you’re thinking. We’ll help you figure out what comes next.</p><div class="contact-actions"><a class="contact-button" href="mailto:ankitdeypersonal@gmail.com?subject=WebToU%20Project%20Enquiry">Tell us about your project <span>↗</span></a><a class="contact-email" href="mailto:ankitdeypersonal@gmail.com">ankitdeypersonal@gmail.com</a></div></div></section>
   </main>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <a class="logo footer-logo" href="#home">WEBTOU<span class="logo-dot">®</span></a>
-
-    <span class="footer-copy">© <span id="currentYear"></span> WEBTOU STUDIO</span>
-
-    <div class="footer-links">
-      <a href="#home">BACK TO TOP ↑</a>
-      <a href="mailto:ankitdeypersonal@gmail.com">EMAIL ↗</a>
-    </div>
-  </footer>
+  <footer class="footer"><a class="logo footer-logo" href="#home">WEBTOU<span class="logo-dot">®</span></a><span class="footer-copy">© <span id="currentYear"></span> WEBTOU STUDIO</span><div class="footer-links"><a href="#faq">FAQ</a><a href="#careers">CAREERS</a><a href="#home">BACK TO TOP ↑</a><a href="mailto:ankitdeypersonal@gmail.com">EMAIL ↗</a></div></footer>
 </body>
 </html>

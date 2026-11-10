@@ -1,285 +1,116 @@
-/* =========================
-   WEBTO — INTERACTIONS
-========================= */
-
-
-/* 1. Current year in footer */
-
-const currentYear = document.querySelector("#currentYear");
-
-if (currentYear) {
-  currentYear.textContent = new Date().getFullYear();
-}
-
-
-/* 2. Scroll reveal animations */
-
-const revealElements = document.querySelectorAll(".reveal");
-
-const revealObserver = new IntersectionObserver(
-  (entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        observer.unobserve(entry.target);
-      }
-    });
-  },
-  {
-    threshold: 0.12,
-  }
-);
-
-revealElements.forEach((element) => {
-  revealObserver.observe(element);
-});
-
-
-/* 3. Mobile navigation */
-
-const menuToggle = document.querySelector("#menuToggle");
-const navLinks = document.querySelector("#navLinks");
-const navItems = document.querySelectorAll(".nav-links a");
-
-function closeMenu() {
-  menuToggle.classList.remove("active");
-  navLinks.classList.remove("open");
-  document.body.classList.remove("menu-open");
-}
-
-menuToggle.addEventListener("click", () => {
-  const isOpen = navLinks.classList.contains("open");
-
-  menuToggle.classList.toggle("active", !isOpen);
-  navLinks.classList.toggle("open", !isOpen);
-  document.body.classList.toggle("menu-open", !isOpen);
-});
-
-navItems.forEach((link) => {
-  link.addEventListener("click", closeMenu);
-});
-
-
-/* 4. Cursor glow effect — desktop only */
-
-const cursorGlow = document.querySelector(".cursor-glow");
-
-const isTouchDevice =
-  "ontouchstart" in window ||
-  navigator.maxTouchPoints > 0;
-
-if (!isTouchDevice) {
-  window.addEventListener("mousemove", (event) => {
-    cursorGlow.style.left = `${event.clientX}px`;
-    cursorGlow.style.top = `${event.clientY}px`;
-    cursorGlow.style.opacity = "1";
-  });
-
-  document.addEventListener("mouseleave", () => {
-    cursorGlow.style.opacity = "0";
-  });
-}
-
-
-/* 5. Interactive studio terminal */
-
-const terminalForm = document.querySelector("#terminalForm");
-const terminalInput = document.querySelector("#terminalInput");
-const terminalOutput = document.querySelector("#terminalOutput");
-const terminalSuggestions = document.querySelectorAll(
-  ".terminal-suggestions button"
-);
-
-const terminalCommands = {
-  help: `
-Available commands:
-
-  services    — What we do
-  work        — Selected projects
-  founders    — Meet the founders
-  philosophy  — How we think
-  contact     — Start a conversation
-  clear       — Clear terminal
-  `,
-
-  services: `
-Our services:
-
-  01  Web design & development
-  02  Brand identity
-  03  Digital experiences
-  04  Creative direction
-
-We build with purpose, not just pixels.
-  `,
-
-  work: `
-Selected work:
-
-  01  ANK1TVERSE — Personal portfolio
-  02  Sunday Club — Café concept
-  03  Objects of Thought — Digital archive
-
-More projects are in the making.
-  `,
-
-  founders: `
-The people behind WEBTO:
-
-  Ankit Dey
-  Founder & Digital Head
-
-  Soumyadeep
-  Founder & Operations Head
-
-Two curious minds.
-One independent studio.
-  `,
-
-  philosophy: `
-We believe:
-
-  Good design should solve real problems.
-  Technology should make things simpler.
-  Every detail should have a reason.
-
-Make it useful.
-Make it memorable.
-Make it mean something.
-  `,
-
-  contact: `
-Have a project in mind?
-
-Email:
-ankitdeypersonal@gmail.com
-
-Tell us what you're thinking.
-We'll help you figure out what comes next.
-  `,
-};
-
-
-function addTerminalLine(text, className = "") {
-  const paragraph = document.createElement("p");
-
-  paragraph.textContent = text;
-  paragraph.className = className;
-
-  terminalOutput.appendChild(paragraph);
-  terminalOutput.scrollTop = terminalOutput.scrollHeight;
-}
-
-
-function runTerminalCommand(command) {
-  const normalizedCommand = command.trim().toLowerCase();
-
-  if (!normalizedCommand) {
-    return;
-  }
-
-  addTerminalLine(`visitor@webto:~$ ${normalizedCommand}`);
-
-  if (normalizedCommand === "clear") {
-    terminalOutput.innerHTML = "";
-    return;
-  }
-
-  if (terminalCommands[normalizedCommand]) {
-    addTerminalLine(
-      terminalCommands[normalizedCommand].trim(),
-      "terminal-response"
-    );
-  } else {
-    addTerminalLine(
-      `Command not found: "${normalizedCommand}". Type "help" to see available commands.`,
-      "terminal-muted"
-    );
-  }
-}
-
-
-terminalForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-
-  runTerminalCommand(terminalInput.value);
-  terminalInput.value = "";
-});
-
-
-terminalSuggestions.forEach((button) => {
-  button.addEventListener("click", () => {
-    const command = button.dataset.command;
-
-    runTerminalCommand(command);
-  });
-});
-
-
-/* 6. Subtle magnetic movement on round links */
-
-const roundLinks = document.querySelectorAll(".round-link");
-
-roundLinks.forEach((link) => {
-  link.addEventListener("mousemove", (event) => {
-    const rect = link.getBoundingClientRect();
-
-    const x = event.clientX - rect.left - rect.width / 2;
-    const y = event.clientY - rect.top - rect.height / 2;
-
-    link.style.transform = `translate(${x * 0.12}px, ${y * 0.12}px)`;
-  });
-
-  link.addEventListener("mouseleave", () => {
-    link.style.transform = "";
-  });
-});
-
-/* WEBTOU seamless marquee measured loop */
+/* WEBTOU — INTERACTIONS */
 (() => {
-  const track = document.querySelector(".marquee-track");
-  const group = track?.querySelector(".marquee-group");
-  if (!track || !group) return;
+  const $ = (selector, root = document) => root.querySelector(selector);
+  const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 
-  let animation = null;
-  let resizeFrame = 0;
-  const speed = 42; // pixels per second
+  // Current year
+  const year = $("#currentYear");
+  if (year) year.textContent = new Date().getFullYear();
 
-  const startMarquee = () => {
-    const distance = group.getBoundingClientRect().width;
-    if (!distance) return;
-
-    if (animation) animation.cancel();
-
-    const duration = (distance / speed) * 1000;
-
-    animation = track.animate(
-      [
-        { transform: "translate3d(0, 0, 0)" },
-        { transform: `translate3d(${-distance}px, 0, 0)` }
-      ],
-      {
-        duration,
-        iterations: Infinity,
-        easing: "linear"
-      }
-    );
-  };
-
-  const scheduleRestart = () => {
-    cancelAnimationFrame(resizeFrame);
-    resizeFrame = requestAnimationFrame(startMarquee);
-  };
-
-  startMarquee();
-
-  if ("ResizeObserver" in window) {
-    const observer = new ResizeObserver(scheduleRestart);
-    observer.observe(group);
-    observer.observe(track);
+  // Scroll reveal: gracefully show content if IntersectionObserver is unavailable.
+  const revealItems = $$(".reveal");
+  if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: "0px 0px -35px 0px" });
+    revealItems.forEach(item => revealObserver.observe(item));
   } else {
-    window.addEventListener("resize", scheduleRestart, { passive: true });
+    revealItems.forEach(item => item.classList.add("visible"));
   }
 
-  document.fonts?.ready?.then(scheduleRestart);
+  // Mobile navigation
+  const menuToggle = $("#menuToggle");
+  const navLinks = $("#navLinks");
+  const closeMenu = () => {
+    if (!menuToggle || !navLinks) return;
+    menuToggle.classList.remove("active");
+    navLinks.classList.remove("open");
+    document.body.classList.remove("menu-open");
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Open navigation");
+  };
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener("click", () => {
+      const opening = !navLinks.classList.contains("open");
+      menuToggle.classList.toggle("active", opening);
+      navLinks.classList.toggle("open", opening);
+      document.body.classList.toggle("menu-open", opening);
+      menuToggle.setAttribute("aria-expanded", String(opening));
+      menuToggle.setAttribute("aria-label", opening ? "Close navigation" : "Open navigation");
+    });
+    $$("a", navLinks).forEach(link => link.addEventListener("click", closeMenu));
+    document.addEventListener("keydown", event => { if (event.key === "Escape") closeMenu(); });
+  }
+
+  // Cursor glow on pointer devices only
+  const cursorGlow = $(".cursor-glow");
+  if (cursorGlow && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    window.addEventListener("pointermove", event => {
+      cursorGlow.style.left = `${event.clientX}px`;
+      cursorGlow.style.top = `${event.clientY}px`;
+      cursorGlow.style.opacity = "1";
+    }, { passive: true });
+    document.addEventListener("pointerleave", () => { cursorGlow.style.opacity = "0"; });
+  }
+
+  // Studio terminal
+  const terminalForm = $("#terminalForm");
+  const terminalInput = $("#terminalInput");
+  const terminalOutput = $("#terminalOutput");
+  const commands = {
+    help: "Available commands:\n\n  services  — What we do\n  work      — Selected work\n  process   — How projects move\n  team      — Meet the team\n  pricing   — Pricing approach\n  contact   — Start a conversation\n  clear     — Clear terminal",
+    services: "Our active services:\n\n  Website development\n  Landing page development\n  Graphic design\n  Brand identity & logo design\n  WordPress development\n  Social media management\n\nSEO and custom admin dashboards are planned for a future phase.",
+    work: "Featured work:\n\n  01  MAA KAMAKHYA TOUR & TRAVELS\n      maakamakhyatourandtravels.in\n  02  ANK1TVERSE — My Portfolio\n      ank1tverse.tech\n\nBoth featured projects link to their live websites.",
+    process: "Our workflow:\n\n  01  Understand the brief\n  02  Define scope and proposal\n  03  Design and get approval\n  04  Build and test\n  05  Launch and hand over",
+    team: "The people behind WebToU:\n\n  Ankit — Founder & CTO\n  Soumyadeep — Chief Operating Officer\n  Dishan — Chief Client Officer",
+    founders: "Founding team:\n\n  Ankit — Founder & CTO\n  Soumyadeep — Chief Operating Officer\n  Dishan — Chief Client Officer",
+    pricing: "Indicative starting points:\n\n  Single-page website — ₹3,499\n  2–5 page website — ₹5,499\n  Brand identity — quoted by scope\n\nFinal pricing is confirmed in a written proposal.",
+    philosophy: "We believe:\n\n  Good design should solve real problems.\n  Technology should make things simpler.\n  Every detail should have a reason.\n\nMake it useful. Make it memorable. Make it mean something.",
+    contact: "Have a project in mind?\n\nEmail: ankitdeypersonal@gmail.com\n\nTell us what you’re thinking. We’ll help you figure out what comes next."
+  };
+  const addTerminalLine = (text, className = "") => {
+    if (!terminalOutput) return;
+    const paragraph = document.createElement("p");
+    paragraph.textContent = text;
+    if (className) paragraph.className = className;
+    terminalOutput.appendChild(paragraph);
+    terminalOutput.scrollTop = terminalOutput.scrollHeight;
+  };
+  const runCommand = command => {
+    const normalized = command.trim().toLowerCase();
+    if (!normalized || !terminalOutput) return;
+    addTerminalLine(`visitor@webtou:~$ ${normalized}`);
+    if (normalized === "clear") { terminalOutput.replaceChildren(); return; }
+    if (Object.prototype.hasOwnProperty.call(commands, normalized)) addTerminalLine(commands[normalized], "terminal-response");
+    else addTerminalLine(`Command not found: "${normalized}". Type "help" to see available commands.`, "terminal-muted");
+  };
+  if (terminalForm && terminalInput) {
+    terminalForm.addEventListener("submit", event => {
+      event.preventDefault();
+      runCommand(terminalInput.value);
+      terminalInput.value = "";
+    });
+    $$(".terminal-suggestions button").forEach(button => button.addEventListener("click", () => runCommand(button.dataset.command || "")));
+  }
+
+  // Subtle magnetic movement on the hero round link
+  $$(".round-link").forEach(link => {
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    link.addEventListener("pointermove", event => {
+      const rect = link.getBoundingClientRect();
+      const x = event.clientX - rect.left - rect.width / 2;
+      const y = event.clientY - rect.top - rect.height / 2;
+      link.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+    });
+    link.addEventListener("pointerleave", () => { link.style.transform = ""; });
+  });
+
+  // The marquee is driven by a CSS loop so the duplicated groups meet seamlessly.
+  // No JavaScript animation is applied here; this avoids competing transforms and blank gaps.
+
 })();
