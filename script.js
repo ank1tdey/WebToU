@@ -71,7 +71,7 @@
     founders: "Founding team:\n\n  Ankit — Founder & CTO\n  Soumyadeep — Chief Operating Officer\n  Dishan — Chief Client Officer",
     pricing: "Indicative starting points:\n\n  Single-page website — ₹3,499\n  2–5 page website — ₹5,499\n  Brand identity — quoted by scope\n\nFinal pricing is confirmed in a written proposal.",
     philosophy: "We believe:\n\n  Good design should solve real problems.\n  Technology should make things simpler.\n  Every detail should have a reason.\n\nMake it useful. Make it memorable. Make it mean something.",
-    contact: "Have a project in mind?\n\nEmail: ankitdeypersonal@gmail.com\n\nTell us what you’re thinking. We’ll help you figure out what comes next."
+    contact: "Have a project in mind?\n\nWhatsApp: +918617646356\nEmail: ankitdeypersonal@gmail.com\n\nUse the contact form to send your project brief on WhatsApp."
   };
   const addTerminalLine = (text, className = "") => {
     if (!terminalOutput) return;
@@ -96,6 +96,30 @@
       terminalInput.value = "";
     });
     $$(".terminal-suggestions button").forEach(button => button.addEventListener("click", () => runCommand(button.dataset.command || "")));
+  }
+
+  // Project enquiry form: compose a WhatsApp message from the visitor's details.
+  const enquiryForm = $("#enquiryForm");
+  if (enquiryForm) {
+    enquiryForm.addEventListener("submit", event => {
+      event.preventDefault();
+      if (!enquiryForm.reportValidity()) return;
+      const formData = new FormData(enquiryForm);
+      const name = String(formData.get("name") || "").trim();
+      const business = String(formData.get("business") || "").trim();
+      const contact = String(formData.get("contact") || "").trim();
+      const service = String(formData.get("service") || "").trim();
+      const brief = String(formData.get("brief") || "").trim();
+      const message = [
+        "Hi WebToU! I'd like to discuss a project.", "",
+        `Name: ${name}`,
+        business ? `Business / Brand: ${business}` : "",
+        `Email or Phone: ${contact}`,
+        `Service Required: ${service}`, "", "Project Brief:", brief
+      ].filter(Boolean).join("\n");
+      const whatsappURL = `https://wa.me/918617646356?text=${encodeURIComponent(message)}`;
+      window.open(whatsappURL, "_blank", "noopener,noreferrer");
+    });
   }
 
   // Subtle magnetic movement on the hero round link
