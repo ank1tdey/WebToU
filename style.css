@@ -2049,207 +2049,362 @@ button {
 
 
 /* =========================================================
-   WEBTOU — SITE-WIDE READABILITY PASS
-   Keeps micro-labels / metadata intentionally compact.
-   All meaningful supporting copy is brought to readable sizes.
-   Appended after legacy rules so older media queries cannot
-   shrink these text styles again.
+   WEBTOU — MOBILE NAVIGATION REBUILD + REFINED READABILITY
+   These are final overrides after the legacy stylesheet.
 ========================================================= */
 
-/* General explanatory copy */
+/* Prevent sideways page drift / clipped cards on narrow screens. */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+main,
+section,
+header,
+footer {
+  max-width: 100%;
+}
+
+* {
+  min-width: 0;
+}
+
+/* Keep the header above all page sections and establish a clean stacking context. */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  isolation: isolate;
+  width: 100%;
+  min-height: 82px;
+  background: rgba(245, 242, 233, .98);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+
+.nav-links {
+  position: static;
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 2vw, 28px);
+  background: transparent;
+}
+
+.menu-toggle {
+  display: none;
+}
+
+/* A calmer, more readable hierarchy: body copy is readable without overpowering headings. */
 .section-intro,
 .hero-description,
-.hero-side-note p,
 .about-bottom > p,
 .contact-bottom p,
-.terminal-intro p,
 .proof-copy > p,
-.social-copy > p,
-.careers-inner > p {
-  font-size: 15px;
-  line-height: 1.75;
-}
-
-/* Service descriptions and supporting details */
-#services .service-row p,
-#services .service-row small,
-#services .future-services span:not(.eyebrow),
-#services .future-services > p {
-  font-size: 14px;
-  line-height: 1.7;
-}
-
-/* Process */
-.process-card p {
-  font-size: 15px;
-  line-height: 1.75;
-}
-
-.process-note {
-  font-size: 14px;
-  line-height: 1.7;
-}
-
-/* Team */
+.process-card p,
 .team-heading p,
-.team-bio {
-  font-size: 14px;
-  line-height: 1.75;
+.team-bio,
+.price-desc,
+.price-card li,
+.faq-item p {
+  font-size: 15px;
+  line-height: 1.72;
 }
 
-.team-role {
+.process-note,
+.pricing-footnote p,
+.proof-stats > p,
+.social-note,
+.form-disclaimer {
   font-size: 13px;
-  line-height: 1.5;
+  line-height: 1.7;
 }
 
-/* Proof / real work section */
 .proof-stats span {
   font-size: 14px;
   line-height: 1.5;
 }
 
-.proof-stats > p {
+/* Services: descriptive copy uses the body font, not the tiny mono metadata treatment. */
+#services .service-row {
+  grid-template-columns: 36px minmax(0, 1fr);
+  gap: 14px;
+  padding: 25px 0;
+  min-height: 0;
+}
+
+#services .service-row > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#services .service-row h3 {
+  font-size: clamp(19px, 1.8vw, 23px);
+  line-height: 1.25;
+}
+
+#services .service-row p {
+  display: block !important;
+  max-width: 700px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #66675f;
+}
+
+#services .service-row small {
+  display: block !important;
+  margin-top: 1px;
+  font-family: var(--font-body);
   font-size: 13px;
-  line-height: 1.7;
-}
-
-/* Pricing cards and important caveats */
-.price-desc {
-  font-size: 14px;
-  line-height: 1.7;
-}
-
-.price-card li {
-  font-size: 14px;
   line-height: 1.65;
+  letter-spacing: .005em;
+  color: #77776d;
 }
 
-.pricing-footnote p {
-  font-size: 13px;
-  line-height: 1.75;
+#services .service-number {
+  padding-top: 3px;
+  font-size: 11px;
 }
 
-/* Contact, forms and supporting instructions */
-.form-disclaimer {
-  font-size: 12px;
+#services .service-group-label {
+  font-size: 10px;
   line-height: 1.6;
 }
 
-.contact-note {
-  font-size: 10px;
+/* Pricing: prevent long legal copy and cards from pushing the page wider than the phone. */
+#pricing,
+#pricing .pricing-grid,
+#pricing .price-card,
+#pricing .pricing-footnote {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
-/* FAQ / careers / social supporting copy */
-.faq-item p {
-  font-size: 14px;
-  line-height: 1.75;
+#pricing .price-card,
+#pricing .pricing-footnote {
+  overflow-wrap: anywhere;
 }
 
-.social-note {
-  font-size: 13px;
-  line-height: 1.65;
+#pricing .pricing-footnote p {
+  max-width: 100%;
 }
 
-.careers-inner > a {
-  font-size: 13px;
-}
-
-/* Future-services explanatory content */
-#services .future-services strong {
-  font-size: 18px;
-  line-height: 1.4;
-}
-
-/* Mobile: retain a comfortable reading size and prevent narrow columns. */
+/* Phone layout: a compact dropdown box directly beneath the header. */
 @media (max-width: 900px) {
+  .nav {
+    min-height: 72px;
+    height: 72px;
+    padding: 0 22px;
+  }
+
+  .menu-toggle {
+    display: flex;
+    position: relative;
+    z-index: 10001;
+    width: 46px;
+    height: 46px;
+    flex: 0 0 46px;
+    padding: 11px;
+    border: 1px solid rgba(36, 37, 31, .18);
+    border-radius: 50%;
+    background: var(--paper);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .menu-toggle span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--ink);
+    transition: transform .2s ease, opacity .2s ease;
+  }
+
+  .menu-toggle.active span:first-child {
+    transform: translateY(3.5px) rotate(45deg);
+  }
+
+  .menu-toggle.active span:last-child {
+    transform: translateY(-3.5px) rotate(-45deg);
+  }
+
+  .nav-links,
+  .nav-links.open {
+    position: absolute;
+    top: calc(100% + 9px);
+    right: 16px;
+    left: auto;
+    bottom: auto;
+    width: min(340px, calc(100vw - 32px));
+    height: auto;
+    max-height: calc(100dvh - 100px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    justify-content: stretch;
+    gap: 8px;
+    padding: 14px;
+    border: 1px solid rgba(36, 37, 31, .16);
+    border-radius: 14px;
+    background: #fbf9f2;
+    box-shadow: 0 18px 50px rgba(36, 37, 31, .18);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: opacity .18s ease, transform .18s ease, visibility .18s ease;
+  }
+
+  .nav-links.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .nav-links a {
+    display: flex;
+    align-items: center;
+    min-height: 54px;
+    padding: 13px 12px;
+    border: 1px solid rgba(36, 37, 31, .10);
+    border-radius: 9px;
+    background: rgba(233, 229, 218, .42);
+    font-family: var(--font-display);
+    font-size: 16px;
+    line-height: 1.2;
+    letter-spacing: -.025em;
+    white-space: normal;
+  }
+
+  .nav-links a span {
+    display: none;
+  }
+
+  .nav-links .nav-contact {
+    grid-column: 1 / -1;
+    justify-content: center;
+    min-height: 48px;
+    margin: 2px 0 0;
+    padding: 13px 18px;
+    border: 0;
+    border-radius: 30px;
+    background: var(--ink);
+    color: var(--paper);
+    font-size: 15px;
+    text-align: center;
+  }
+
+  body.menu-open {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  /* Mobile copy: balanced and consistent, not oversized. */
   .section-intro,
   .hero-description,
-  .hero-side-note p,
   .about-bottom > p,
   .contact-bottom p,
-  .terminal-intro p,
   .proof-copy > p,
-  .social-copy > p,
-  .careers-inner > p,
   .process-card p,
-  .process-note,
   .team-heading p,
   .team-bio,
   .price-desc,
   .price-card li,
-  .pricing-footnote p,
   .faq-item p {
-    font-size: 15px;
-    line-height: 1.75;
-  }
-
-  .proof-stats span {
     font-size: 14px;
-  }
-
-  .proof-stats > p,
-  .social-note {
-    font-size: 13px;
     line-height: 1.7;
   }
 
+  .process-note,
+  .pricing-footnote p,
+  .proof-stats > p,
+  .social-note,
   .form-disclaimer {
+    font-size: 12.5px;
+    line-height: 1.65;
+  }
+
+  #services .service-row {
+    grid-template-columns: 25px minmax(0, 1fr);
+    gap: 10px;
+    padding: 21px 0;
+  }
+
+  #services .service-row h3 {
+    font-size: 19px;
+  }
+
+  #services .service-row p {
+    font-size: 14px;
+    line-height: 1.68;
+  }
+
+  #services .service-row small {
+    font-size: 12.5px;
+    line-height: 1.65;
+  }
+
+  #services .service-group-label {
+    font-size: 9px;
+  }
+
+  #pricing .pricing-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  #pricing .price-card:last-child {
+    grid-column: auto;
+  }
+
+  #pricing .price-card {
+    padding: 24px 20px;
+  }
+
+  #pricing .pricing-footnote {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 420px) {
+  .nav {
+    padding: 0 18px;
+  }
+
+  .nav-links,
+  .nav-links.open {
+    right: 12px;
+    width: calc(100vw - 24px);
+  }
+
+  .section-padding {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  #services .service-row p {
+    font-size: 14px;
+  }
+
+  #services .service-row small {
     font-size: 12px;
   }
 }
 
-@media (max-width: 600px) {
-  .section-intro,
-  .hero-description,
-  .hero-side-note p,
-  .about-bottom > p,
-  .contact-bottom p,
-  .terminal-intro p,
-  .proof-copy > p,
-  .social-copy > p,
-  .careers-inner > p,
-  .process-card p,
-  .process-note,
-  .team-heading p,
-  .team-bio,
-  .price-desc,
-  .price-card li,
-  .pricing-footnote p,
-  .faq-item p {
-    font-size: 15px;
-    line-height: 1.75;
-  }
-
-  .process-card p {
-    margin-top: 10px;
-  }
-
-  .process-note {
-    margin-top: 18px;
-  }
-
-  .team-bio {
-    max-width: none;
-  }
-
-  .proof-stats span {
-    font-size: 14px;
-  }
-
-  .proof-stats > p,
-  .social-note {
-    font-size: 13px;
-  }
-
-  .price-desc {
-    min-height: 0;
-  }
-
-  .pricing-footnote {
-    padding: 17px;
-  }
-
-  .form-disclaimer {
-    font-size: 12px;
+@media (prefers-reduced-motion: reduce) {
+  .nav-links,
+  .menu-toggle span {
+    transition: none !important;
   }
 }

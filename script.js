@@ -23,28 +23,53 @@
     revealItems.forEach(item => item.classList.add("visible"));
   }
 
-  // Mobile navigation
+  // Compact mobile navigation: accessible, contained dropdown panel.
   const menuToggle = $("#menuToggle");
   const navLinks = $("#navLinks");
-  const closeMenu = () => {
+  const closeMenu = ({ returnFocus = false } = {}) => {
     if (!menuToggle || !navLinks) return;
     menuToggle.classList.remove("active");
     navLinks.classList.remove("open");
     document.body.classList.remove("menu-open");
     menuToggle.setAttribute("aria-expanded", "false");
     menuToggle.setAttribute("aria-label", "Open navigation");
+    if (returnFocus) menuToggle.focus();
   };
+
   if (menuToggle && navLinks) {
     menuToggle.addEventListener("click", () => {
-      const opening = !navLinks.classList.contains("open");
-      menuToggle.classList.toggle("active", opening);
-      navLinks.classList.toggle("open", opening);
-      document.body.classList.toggle("menu-open", opening);
-      menuToggle.setAttribute("aria-expanded", String(opening));
-      menuToggle.setAttribute("aria-label", opening ? "Close navigation" : "Open navigation");
+      const isOpening = menuToggle.getAttribute("aria-expanded") !== "true";
+      if (isOpening) {
+        menuToggle.classList.add("active");
+        navLinks.classList.add("open");
+        document.body.classList.add("menu-open");
+        menuToggle.setAttribute("aria-expanded", "true");
+        menuToggle.setAttribute("aria-label", "Close navigation");
+      } else {
+        closeMenu();
+      }
     });
-    $$("a", navLinks).forEach(link => link.addEventListener("click", closeMenu));
-    document.addEventListener("keydown", event => { if (event.key === "Escape") closeMenu(); });
+
+    $$("a", navLinks).forEach(link => {
+      link.addEventListener("click", () => closeMenu());
+    });
+
+    document.addEventListener("click", event => {
+      if (!navLinks.classList.contains("open")) return;
+      if (!navLinks.contains(event.target) && !menuToggle.contains(event.target)) {
+        closeMenu();
+      }
+    });
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape" && navLinks.classList.contains("open")) {
+        closeMenu({ returnFocus: true });
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 900) closeMenu();
+    }, { passive: true });
   }
 
   // Cursor glow on pointer devices only
