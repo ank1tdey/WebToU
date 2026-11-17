@@ -2555,3 +2555,10 @@ footer {
     min-height: 58px;
   }
 }
+
+
+/* WebToU hero marquee alignment: remove the slight diagonal tilt.
+   The continuous horizontal loop on .marquee-track remains unchanged. */
+.marquee {
+  transform: none !important;
+}
