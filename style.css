@@ -2408,3 +2408,150 @@ footer {
     transition: none !important;
   }
 }
+
+
+/* =========================================================
+   WEBTOU — FULL-PAGE MOBILE NAVIGATION
+   Replace the floating dropdown with a complete, opaque
+   navigation canvas while retaining the existing menu JS.
+========================================================= */
+@media (max-width: 900px) {
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    isolation: isolate;
+  }
+
+  .nav > .logo {
+    position: relative;
+    z-index: 10002;
+  }
+
+  .nav-status {
+    display: none;
+  }
+
+  .menu-toggle {
+    position: relative;
+    z-index: 10003;
+  }
+
+  .nav-links,
+  .nav-links.open {
+    position: fixed;
+    inset: 0;
+    z-index: 10001;
+    width: 100vw;
+    height: 100dvh;
+    max-height: none;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-content: center;
+    align-items: stretch;
+    justify-content: stretch;
+    gap: clamp(12px, 2.5vw, 22px);
+    padding:
+      max(118px, calc(env(safe-area-inset-top) + 105px))
+      clamp(22px, 8vw, 76px)
+      max(42px, env(safe-area-inset-bottom));
+    border: 0;
+    border-radius: 0;
+    background: var(--paper);
+    box-shadow: none;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(8px);
+    transition: opacity .22s ease, transform .22s ease, visibility .22s ease;
+  }
+
+  .nav-links.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .nav-links a {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: clamp(82px, 15vh, 132px);
+    padding: clamp(18px, 3vw, 30px);
+    border: 1px solid rgba(36, 37, 31, .17);
+    border-radius: 12px;
+    background: rgba(233, 229, 218, .42);
+    font-family: var(--font-display);
+    font-size: clamp(22px, 4.5vw, 34px);
+    line-height: 1.12;
+    letter-spacing: -.045em;
+    white-space: normal;
+    transition: background .2s ease, border-color .2s ease, transform .2s ease;
+  }
+
+  .nav-links a:active {
+    background: rgba(49, 91, 214, .08);
+    border-color: var(--blue);
+    transform: scale(.985);
+  }
+
+  .nav-links a span {
+    display: none;
+  }
+
+  .nav-links .nav-contact {
+    grid-column: 1 / -1;
+    justify-content: center;
+    min-height: 68px;
+    margin-top: 6px;
+    padding: 18px 24px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--ink);
+    color: var(--paper);
+    font-size: clamp(18px, 3.8vw, 24px);
+    letter-spacing: -.02em;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-links,
+  .nav-links.open {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .nav-links a {
+    min-height: 92px;
+    padding: 16px;
+    font-size: clamp(20px, 5.5vw, 25px);
+  }
+
+  .nav-links .nav-contact {
+    min-height: 62px;
+    font-size: 19px;
+  }
+}
+
+@media (max-height: 620px) and (max-width: 900px) {
+  .nav-links,
+  .nav-links.open {
+    align-content: start;
+    padding-top: max(94px, calc(env(safe-area-inset-top) + 86px));
+    padding-bottom: 28px;
+  }
+
+  .nav-links a {
+    min-height: 70px;
+  }
+
+  .nav-links .nav-contact {
+    min-height: 58px;
+  }
+}
